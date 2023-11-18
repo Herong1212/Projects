@@ -3,7 +3,7 @@ while i <= 5:
     if i == 3:
         print('这遍说的不真诚')
         i += 1
-        break
+        continue
     print('媳妇儿. 我错了')
     i += 1
 else:
