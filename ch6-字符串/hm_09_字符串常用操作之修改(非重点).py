@@ -20,6 +20,7 @@
 # new_str = mystr.upper()
 # print(new_str)
 
+"""
 mystr = "   hello world and itcast and itheima and Python   "
 print(mystr)
 
@@ -37,3 +38,19 @@ print(new_str2)
 new_str3 = mystr.strip()
 # 结果:hello world and itcast and itheima and Python
 print(new_str3)
+"""
+
+mystr = 'hello'
+
+# 1. ljust() --
+new_str1 = mystr.ljust(10, '.')
+print(new_str1)
+
+# 2. rjust() --
+new_str2 = mystr.rjust(10, '.')
+print(new_str2)
+
+# 3. center() --
+new_str3 = mystr.center(10, '.')
+print(new_str3)
+
