@@ -1816,21 +1816,537 @@ print(type(name))
 
 列表的作用是一次性存储多个数据，程序员可以对这些数据进行的操作有：增、删、改、查。
 
-3.1  查找
+#### 3.1  查找
 
-3.1.1  下标
+##### 3.1.1  下标
 
+```
+name_list = ["Tom", "Lily", "Rose"]
 
+print(name_list)
 
-
-
-
-
-
-
-
-
-
+print(name_list[0])		# Tom
+print(name_list[1])		# Lily
+print(name_list[2])		# Rose
+```
 
 
+
+##### 3.1.2  函数
+
+- ==index()== :  返回指定数据所在位置下标
+
+    1. 语法
+
+        ```
+        列表序列.index( 数据,  开始位置下标,  结束位置下标)
+        ```
+
+        
+
+    2. 快速体验
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        print(name_list.index("Tom"))
+        print(name_list.index("Toms"))
+        ```
+
+        注意:  如果查找的数据不存在则报错
+
+        
+
+- ==count()== :  统计指定数据在当前列表中出现的次数
+
+    1. 语法:
+
+    2. 快速体验
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        print(name_list.count("Tom"))
+        print(name_list.count("Toms"))  		# 没有即返回 0
+        ```
+
+        
+
+- ==len()== :  访问列表长度,  即列表中数据的个数
+
+    1. 语法:
+
+    2. 快速体验
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        print(len(name_list)) 			# 3
+        ```
+
+        
+
+##### 3.1.3  判断是否存在
+
+- ==in== : 判断指定数据在某个列表序列中是否存在,  如果存在返回 True,  不存在则返回 False.
+
+    1.  快速体验
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        # 1. in
+        print("Lily" in name_list)
+        print("Lilys" in name_list)
+        ```
+
+        
+
+- ==not in== : 判断指定数据不在某个列表序列中,  如果不在返回 True,  存在则返回 False
+
+    1. 快速体验
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        # 2.not in
+        print("tom" not in name_list)
+        print("Tom" not in name_list)
+        ```
+
+        
+
+- 体验案例:
+
+    需求:  查找用户输入的名字是否已经存在
+
+    ```
+    name_list = ["Tom", "Lily", "Rose"]
+    
+    name = input("请输入您的名字: ")
+    print(f'您输入的名字为:{name}')
+    
+    if name in name_list:
+        # 提示用户名已经存在
+        print("The name you input has exists !")
+    else:
+        # 提示可以注册
+        print("input successful!")
+    ```
+
+    
+
+#### 3.2  增加
+
+作用:  增加指定数据到列表中
+
+- ==append()== : 列表结尾追加数据
+
+    1. 语法: 
+
+        ```
+        列表序列.append( 数据 )
+        ```
+
+        
+
+    2. 体验
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        name_list.append("xiaoming")
+        
+        print(name_list)
+        ```
+
+        列表追加数据的时候,直接在圆列表里面追加了数据,  即修改了原列表,   故列表为可变类型数据
+
+        
+
+    3. 注意点
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        name_list.append([11, 22])
+        
+        print(name_list)
+        ```
+
+​			如果 append() 追加的数据是一个序列,  则追加整个序列到列表
+
+
+
+
+
+- ==extend()== :  列表结尾追加数据,  如果数据是一个序列,  则将这个序列的数据逐一添加到列表中.
+
+    1. 语法:
+
+        ```
+        列表序列.entend( 数据 )
+        ```
+
+        
+
+    2. 快速体验
+
+        2.1 单个数据
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        name_list.extend("xiaoming")
+        
+        # 结果:  ['Tom', 'Lily', 'Rose', 'x', 'i', 'a', 'o', 'm', 'i', 'n', 'g']
+        print(name_list)
+        
+        ```
+
+        
+
+        2.2 序列数据
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        name_list.extend(["xiaoming", "xiaohong"])
+        
+        # 结果:  ['Tom', 'Lily', 'Rose', 'xiaoming', 'xiaohong']
+        print(name_list)
+        
+        ```
+
+        
+
+- ==insert()== :  指定位置新增数据
+
+    1. 语法:
+
+        ```
+        列表序列.insert( 位置下标,  数据 )
+        ```
+
+    2. 快速体验
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        # name_list.insert(下标, 数据)
+        name_list.insert(1, "Lily")
+        
+        # 结果 : ['Tom', 'Lily', 'Lily', 'Rose']
+        print(name_list)
+        
+        ```
+
+#### 3.3  删除
+
+- ==del==
+
+    1. 语法:
+
+        ```
+        del 目标
+        或  del ( 目标 )
+        ```
+
+        
+
+    2. 快速体验
+
+        2.1 删除列表
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        # del name_list
+        # del(name_list)
+        
+        print(name_list)
+        ```
+
+        
+
+        
+
+        2.2 删除指定数据
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        del name_list[0]
+        print(name_list)
+        ```
+
+        
+
+- ==pop()== : 删除指定下标的数据( 默认为最后一个 ), 并返回该数据
+
+    1. 语法
+
+        ```
+        列表序列.pop( 下标 )
+        ```
+
+        
+
+    2. 快速体验
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        del_name = name_list.pop()
+        del_name = name_list.pop(1)
+        
+        # 结果: Rose
+        print(del_name)
+        
+        # 结果 : ['Tom', 'Lily']
+        print(name_list)
+        ```
+
+    
+
+- ==remove()== : 移除列表中某个数据的 <u>第一个</u> 匹配项,  即如果有两个 “Rose” ,  则只删除第一个.
+
+    1. 语法:
+
+        ```
+        列表序列.remove( 数据 )
+        ```
+
+        
+
+    2. 快速体验
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        name_list.remove("Lily")
+        
+        # 结果: ["Tom",  "Rose"]
+        print(name_list)
+        
+        ```
+
+        
+
+- ==clear()== : 清空列表
+
+    1. 快速体验
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        name_list.clear()
+        
+        # 结果: [ ]
+        print(name_list)
+        
+        ```
+
+#### 3.4  修改
+
+- ==修改指定下标数据==
+
+    1. 语法:
+
+        ```
+        name_list = ["Tom", "Lily", "Rose"]
+        
+        name_list[0] = "aaa"
+        
+        # 结果 : ["aaa", "Lily", "Rose"]
+        print(name_list)
+        
+        ```
+
+        
+
+- ==逆置 : reverse()==
+
+    1. 快速体验
+
+        ```
+        list1 = [1, 3, 2, 5, 4, 6]
+        
+        list1.reverse()
+        
+        # 结果 : [6, 4, 5, 2, 3, 1]
+        print(list1)
+        ```
+
+        
+
+- ==排序 : sort()==
+
+    1. 语法:
+
+        ```
+        列表序列.sort( key=None,  reverse=False )
+        ```
+
+        注意: reverse表示排序规则, reverse = True 降序, reverse = False 升序 ( 默认 )
+
+        
+
+    2. 快速体验
+
+        ```
+        list1 = [1, 3, 2, 5, 4, 6]
+        
+        list1.sort()
+        
+        # 结果 : [1, 2, 3, 4, 5, 6]
+        print(list1)
+        ```
+
+
+
+#### 3.5  复制
+
+函数 : copy()
+
+```
+name_list = ["Tom", "Lily", "Rose"]
+
+
+name_list2 = name_list.copy()
+
+# 结果: ['Tom', 'Lily', 'Rose']
+print(name_list)
+print(name_list2)
+
+```
+
+```
+#   工作中因为数据来之不易, 常常先将原始数据复制一份, 一份作保留, 另一份进行修改操作
+```
+
+
+
+### 四.  列表的循环遍历
+
+需求: 依次打印列表中的各个数据
+
+#### 4.1  while
+
+- 代码
+
+    ```
+    name_list = ["Tom", "Lily", "Rose"]
+    
+    i = 0
+    while i < len(name_list):		# 此处的 len 取得 3
+        print(name_list[i])
+        i += 1
+        
+    print("遍历结束")
+    ```
+
+    
+
+- 执行结果
+
+    ![](/home/ghr/图片/py教程/列表的遍历循环之while.png)
+
+    
+
+#### 4.2  for
+
+- 代码
+
+    ```
+    name_list = ["Tom", "Lily", "Rose"]
+    
+    for i in name_list:
+        print(i)
+    ```
+
+    
+
+- 执行结果
+
+    ![](/home/ghr/图片/py教程/列表的循环遍历之for.png)
+
+
+
+#### 4.3  总结
+
+由代码可看出,  在遍历序列中的数据时,  for 循环比 while 循环使用的代码少的多,  所以优先考虑使用 for 循环来遍历裂变中的数据.
+
+
+
+### 五.  列表嵌套
+
+所谓列表嵌套指的就是一个列表里面包含了其他的子列表.
+
+应用场景:  要存储班级一,二,三三个班级里的学生姓名,  且每个班级的学生姓名在一个列表.
+
+```
+name_list = [["小明", "小红", "小绿"], ["Tom", "Lily", "Rose"], ["张三", "李四", "王五"]]
+
+```
+
+思考:  如何查找到数据 “ 李四 ”?
+
+
+
+```
+name_list = [["小明", "小红", "小绿"], ["Tom", "Lily", "Rose"], ["张三", "李四", "王五"]]
+
+#  第一步:  按下标查找到 李四 所在的列表
+print(name_list[2])
+
+#  第二步 : 从 李四 所在的列表里面,  再按下标找到数据 李四
+print(name_list[2][1])
+```
+
+ 
+
+### 六.  综合应用 – 随机分配办公室
+
+需求:  有三个办公室,  8位老师,  8位老师随机分配到3个办公室
+
+```
+
+```
+
+
+
+### 七.  总结
+
+- 列表的格式
+
+    ```
+    [ 数据1, 数据2, 数据3]
+    ```
+
+    
+
+- 常用操作方法
+
+    - index( )
+
+    - len( )
+
+    - append( )
+
+    - pop( )
+
+    - remove( )
+
+        
+
+- 列表嵌套
+
+    ```
+    name_list = [["小明", "小红", "小绿"], ["Tom", "Lily", "Rose"], ["张三", "李四", "王五"]]
+    
+    print(name_list[2][1])    # 李四
+    ```
+
+    
 
