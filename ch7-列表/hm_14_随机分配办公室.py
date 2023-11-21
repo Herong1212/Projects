@@ -12,3 +12,33 @@
 3.验证是否分配成功
     打印办公室详细信息: 每个办公室的人数和对应的老师名字
 """
+
+import random
+
+# 1.准备数据
+teachers = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+offices = [[], [], []]
+
+# 2.分配老师到办公室 -- 取到每个老师放到办公室列表 -- 遍历老师列表数据
+for name in teachers:
+    # 列表追加数据 -- append(选中) extend() insert
+    # xx[0] -- 不能指定是具体某个下标 -- 随机
+    num = random.randint(0, 2)
+    offices[num].append(name)
+
+# print(num)
+
+# print(offices)
+
+# 为了更贴近生活, 把各个办公室子列表加一个办公室编号1, 2, 3
+i = 1
+# 3.验证是否分配成功
+for office in offices:
+    # 打印办公室人数 -- 子列表数据的个数 -- len()
+    print(f'办公室{i}有{len(office)}名老师, 分别为: ')
+    # 打印老师的名字
+    # print() -- 每个字列表里面的名字都不一样 -- 还要遍历 -- 子列表
+    for name in office:
+        print(name, end='  ')
+    print()
+    i += 1
